@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI per il lavoro Sales reale - Albina Temisheva</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F5F3F0;
+  --white:#FFFFFF;
+  --lavender:#EDEAF7;
+  --lavender-line:#D6CFEE;
+  --lavender-text:#8B7BC7;
+  --dark:#1A1A1A;
+  --gray:#6B6663;
+  --gray-light:#9B9691;
+  --line:#E5E1DC;
+  --orange:#F4633A;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --r:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--dark);background:var(--white);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* ═════ ONLY 3 TEXT STYLES ON THE WHOLE PAGE ═════ */
+/* 1. TITLES - serif, dark */
+h1,h2,h3,.title{font-family:var(--serif);font-weight:700;color:var(--dark);line-height:1.2}
+h1{font-size:clamp(34px,4.4vw,50px);margin-bottom:24px}
+h2{font-size:clamp(26px,3.2vw,36px);margin-bottom:22px}
+h3{font-size:21px;margin-bottom:8px}
+
+/* 2. BODY TEXT - sans, gray, one size, everywhere */
+p,.body-text{font-family:var(--sans);font-size:15px;line-height:1.75;color:var(--gray);font-weight:400}
+p strong,.body-text strong{color:var(--dark);font-weight:600}
+.lead{font-size:17px;line-height:1.7;color:var(--gray);max-width:660px}
+
+/* 3. LABELS - sans, uppercase, small, tracked */
+.label{font-family:var(--sans);font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;color:var(--orange)}
+.label.muted{color:var(--lavender-text)}
+.label.light{color:var(--gray-light)}
+
+/* ═════ NAV ═════ */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 48px;display:flex;justify-content:space-between;align-items:center;height:56px}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{font-family:var(--sans);font-size:13px;color:var(--gray);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-site{font-family:var(--sans);font-size:13px;color:var(--gray);text-decoration:none}
+.nav-site:hover{color:var(--orange)}
+
+/* ═════ LAYOUT ═════ */
+.section{padding:80px 64px}
+.inner{max-width:1000px;margin:0 auto}
+.bg-white{background:var(--white)}
+.bg-cream{background:var(--cream)}
+.bg-lavender{background:var(--lavender)}
+
+/* ═════ HERO ═════ */
+.hero-chain{display:flex;align-items:center;flex-wrap:wrap;gap:14px;margin:40px 0 48px}
+.hc-item{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--dark)}
+.hc-item.final{color:var(--lavender-text)}
+.hc-arrow{font-size:16px;color:var(--gray-light)}
+.hero-sign{border-top:1px solid var(--line);padding-top:28px}
+.hs-name{font-family:var(--serif);font-size:21px;font-weight:700;margin-bottom:4px}
+.hs-role{font-family:var(--sans);font-size:14px;color:var(--orange);font-weight:600;margin-bottom:3px}
+.hs-cert{font-family:var(--sans);font-size:13px;color:var(--gray-light)}
+
+/* ═════ NUMBERED LIST (used everywhere for step-lists) ═════ */
+.num-list{border-top:1px solid var(--line)}
+.num-row{display:grid;grid-template-columns:48px 1fr;gap:8px;padding:24px 0;border-bottom:1px solid var(--line);align-items:start}
+.num-n{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--orange);padding-top:2px}
+.num-n.muted{color:var(--lavender-text)}
+.num-title{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--dark);margin-bottom:6px}
+.num-eyebrow{margin-bottom:6px}
+
+/* short numbered list without descriptions (summary) */
+.num-row-short{display:grid;grid-template-columns:48px 1fr;gap:8px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.num-row-short p{margin:0;color:var(--dark);font-size:16px}
+
+/* ═════ ROADMAP - 3 dots, 3 zones ═════ */
+.roadmap{margin:44px 0 8px}
+.rm-track-wrap{position:relative;height:2px;background:var(--line);margin:0 0 0}
+.rm-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--white);border:2px solid var(--gray-light)}
+.rm-dot.post{border-color:var(--lavender-text)}
+.rm-cols{display:grid;grid-template-columns:0.7fr 1fr 1fr;gap:24px;margin-top:22px}
+.rm-col{padding-top:4px}
+.rm-col-post{background:var(--lavender);border-radius:var(--r);padding:18px 20px;margin-top:-4px}
+.rm-col-label{margin-bottom:8px}
+.rm-col-title{font-family:var(--serif);font-size:17px;font-weight:700;margin-bottom:6px}
+.rm-col-text{font-size:13px;color:var(--gray);line-height:1.6}
+
+/* ═════ PHASE DETAIL BLOCKS - one unified template ═════ */
+.phase-block{margin-bottom:18px;padding:32px 36px;border-radius:var(--r)}
+.phase-block.on-cream{background:var(--cream)}
+.phase-block.on-white{background:var(--white);border:1px solid var(--line)}
+.phase-block.on-lavender{background:var(--lavender)}
+.pb-eyebrow{margin-bottom:10px}
+.pb-title{font-family:var(--serif);font-size:24px;font-weight:700;margin-bottom:6px}
+.pb-meta{font-size:13px;color:var(--gray-light);margin-bottom:16px}
+.pb-sub{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.pb-sub-label{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.pb-out{background:var(--white);border-radius:10px;padding:16px 20px;margin-top:16px}
+.phase-block.on-lavender .pb-out{background:rgba(255,255,255,0.7)}
+.pb-out-l{margin-bottom:6px}
+.pb-out-t{font-size:14px;color:var(--dark);line-height:1.6}
+
+/* ═════ CASE INTRO + CHAIN ═════ */
+.case-intro{background:var(--white);border-radius:var(--r);padding:22px 26px;margin:22px 0 26px}
+.case-intro p{margin:0;color:var(--dark)}
+
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin-bottom:28px}
+.ch-item{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--lavender-text);background:var(--white);padding:8px 14px;border-radius:16px}
+.ch-item.last{color:var(--orange)}
+.ch-arr{color:var(--gray-light);padding:0 8px;font-size:13px}
+
+/* ═════ DAY BLOCKS ═════ */
+.day{background:var(--white);border-radius:var(--r);padding:28px 30px;margin-bottom:16px}
+.day-badge{display:inline-block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:var(--orange);padding:5px 13px;border-radius:16px;margin-bottom:14px}
+.day-title{font-family:var(--serif);font-size:21px;font-weight:700;margin-bottom:6px}
+.day-sub{font-size:14px;color:var(--gray);margin-bottom:22px}
+.day-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;padding-top:20px;border-top:1px solid var(--line)}
+.dc-label{margin-bottom:10px}
+.dc-text{font-size:14px;color:var(--gray);line-height:1.7}
+.dc-list{list-style:none;padding:0}
+.dc-list li{font-size:14px;color:var(--dark);padding:6px 0;border-bottom:1px solid var(--line)}
+.dc-list li:last-child{border-bottom:none}
+.dc-note{font-size:13px;color:var(--gray);line-height:1.6;margin-top:12px}
+
+.result-box{background:var(--cream);border-radius:var(--r);padding:26px 30px;margin-top:8px}
+.result-chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin-bottom:14px}
+.rs-item{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--dark)}
+.rs-arr{color:var(--lavender-text);padding:0 10px;font-size:14px}
+
+/* ═════ CARDS ═════ */
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px}
+.card{background:var(--white);border-radius:var(--r);padding:24px 22px}
+.card-num{font-family:var(--serif);font-size:36px;font-weight:700;color:var(--lavender-text);line-height:1;margin-bottom:10px}
+.card-title{font-family:var(--serif);font-size:17px;font-weight:700;margin-bottom:8px}
+.card-text{font-size:14px;color:var(--gray);line-height:1.65}
+
+/* ═════ PATH PILLS ═════ */
+.path{background:var(--white);border-radius:10px;padding:16px 20px;margin:16px 0;display:flex;align-items:center;flex-wrap:wrap;gap:0}
+.pt-item{font-size:13px;font-weight:600;color:var(--dark)}
+.pt-arr{color:var(--lavender-text);padding:0 8px;font-size:13px}
+
+/* ═════ TABLE ═════ */
+.choice{width:100%;border-collapse:collapse;margin-top:12px;background:var(--white);border-radius:var(--r);overflow:hidden}
+.choice th{font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--gray-light);text-align:left;padding:16px 22px;border-bottom:1px solid var(--line)}
+.choice td{font-size:14px;padding:16px 22px;border-bottom:1px solid var(--line);color:var(--gray)}
+.choice tr:last-child td{border-bottom:none}
+.choice td:last-child{color:var(--lavender-text);font-weight:600;white-space:nowrap}
+
+/* ═════ CONTACT ═════ */
+.contact{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center}
+.contact-photo{width:180px;height:180px;border-radius:50%;object-fit:cover;object-position:center 18%}
+.ct-name{font-family:var(--serif);font-size:30px;font-weight:700;margin-bottom:8px}
+.ct-role{font-size:15px;color:var(--orange);font-weight:600;margin-bottom:6px}
+.ct-cert{font-size:13px;color:var(--gray-light);margin-bottom:24px}
+.ct-links{display:flex;flex-direction:column;gap:8px}
+.ct-link{font-size:15px;color:var(--dark);text-decoration:none}
+.ct-link:hover{color:var(--orange)}
+
+/* ═════ RESPONSIVE ═════ */
+/* ═════ TABLET - 768px to 900px ═════ */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .section{padding:56px 28px}
+  .cards-3,.day-cols,.rm-cols{grid-template-columns:1fr}
+  .rm-col-post{margin-top:0}
+  h1{font-size:clamp(28px,3.5vw,40px)}
+  h2{font-size:clamp(22px,2.8vw,30px)}
+}
+
+/* ═════ MOBILE - 640px to 768px ═════ */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .section{padding:48px 24px}
+  .cards-2{grid-template-columns:1fr}
+  h1{font-size:clamp(26px,3vw,36px)}
+  h2{font-size:clamp(20px,2.5vw,28px)}
+  h3{font-size:18px}
+  p,.body-text{font-size:14px}
+  .lead{font-size:15px}
+}
+
+/* ═════ SMALL MOBILE - 480px to 640px ═════ */
+@media(max-width:640px){
+  .section{padding:40px 18px}
+  .cards-2,.cards-3,.contact{grid-template-columns:1fr}
+  .day-cols,.rm-cols{grid-template-columns:1fr}
+  
+  /* Vertical roadmap on mobile */
+  .rm-track-wrap{height:auto;width:2px;background:var(--lavender-line);margin:0 0 0 6px;min-height:280px;position:relative}
+  .rm-dot{left:50% !important;top:auto !important;transform:translate(-50%,0) !important}
+  .rm-dot:nth-of-type(1){top:0px !important}
+  .rm-dot:nth-of-type(2){top:130px !important}
+  .rm-dot:nth-of-type(3){top:260px !important}
+  .roadmap{display:flex;gap:0}
+  .rm-cols{display:flex;flex-direction:column;gap:0;margin-top:0}
+  .rm-col{padding-top:0;padding-left:16px;padding-bottom:32px;border-left:2px solid var(--line);margin-left:-10px;border-top:none}
+  .rm-col-post{background:transparent;border-radius:0;padding:0;margin-top:0;padding-left:16px}
+  
+  .contact{text-align:center}
+  .contact-photo{margin:0 auto 20px}
+  .ct-links{align-items:center;justify-content:center}
+  .nav-inner{padding:0 16px}
+  
+  h1{font-size:clamp(24px,2.8vw,32px)}
+  h2{font-size:clamp(18px,2.2vw,24px)}
+  h3{font-size:16px;margin-bottom:6px}
+  p,.body-text{font-size:13px;line-height:1.6}
+  .lead{font-size:14px}
+  .label{font-size:10px}
+  
+  .chain,.result-chain,.path,.hero-chain{flex-direction:column;align-items:flex-start;gap:4px}
+  .ch-arr,.rs-arr,.pt-arr,.hc-arrow{transform:rotate(90deg);font-size:12px}
+  .hc-item{font-size:16px}
+  
+  .choice{display:block}
+  .choice thead{display:none}
+  .choice tr{display:block;border-bottom:1px solid var(--line);padding:12px 14px}
+  .choice td{display:block;padding:2px 0;border:none;font-size:13px}
+  
+  .phase-block{padding:20px 16px}
+  .num-row{gap:6px;padding:16px 0}
+  .num-n{font-size:12px}
+  .num-title{font-size:16px;margin-bottom:4px}
+  
+  .rm-cols{grid-template-columns:1fr}
+  .rm-col-post{margin-top:0}
+  .rm-col-title{font-size:14px}
+}
+
+/* ═════ EXTRA SMALL - under 480px ═════ */
+@media(max-width:480px){
+  .section{padding:32px 14px}
+  .inner{padding:0}
+  
+  h1{font-size:22px;margin-bottom:16px}
+  h2{font-size:18px;margin-bottom:14px}
+  h3{font-size:15px;margin-bottom:5px}
+  p,.body-text{font-size:12px;line-height:1.5}
+  .lead{font-size:13px}
+  .label{font-size:9px;letter-spacing:.08em}
+  
+  .nav-inner{padding:0 12px;height:52px}
+  .nav-site{font-size:12px}
+  
+  .hero-chain{gap:8px;margin:24px 0 32px}
+  .hc-item{font-size:14px}
+  .hc-arrow{font-size:13px}
+  
+  .hs-name{font-size:18px;margin-bottom:3px}
+  .hs-role{font-size:12px}
+  .hs-cert{font-size:12px}
+  
+  .num-row{grid-template-columns:36px 1fr;gap:6px;padding:12px 0}
+  .num-n{font-size:11px}
+  .num-title{font-size:15px;margin-bottom:3px}
+  
+  .phase-block{padding:16px 12px;border-radius:6px}
+  .choice tr{padding:10px 10px}
+  .choice td{font-size:12px;padding:1px 0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-links">
+      <li><a href="#approccio">L'approccio</a></li>
+      <li><a href="#percorso">Il percorso</a></li>
+      <li><a href="#perchi">Per chi</a></li>
+    </ul>
+    <a href="https://changelabtech.com" class="nav-site" target="_blank">changelabtech.com</a>
+  </div>
+</nav>
+
+<!-- ═════ 01 HERO - white ═════ -->
+<section class="section bg-white" id="top">
+  <div class="inner">
+    <div class="label">Percorso formativo · Sales + AI</div>
+    <h1 style="margin-top:20px">AI per il lavoro<br>Sales reale</h1>
+    <p class="lead">Come usare l'AI dove il Sales è davvero complesso - quando bisogna analizzare un contesto articolato, preparare una strategia, dimostrare il valore di un'offerta o coordinare più team su un'unica opportunità.</p>
+
+    <div class="hero-chain">
+      <span class="hc-item">Real Sales Case</span>
+      <span class="hc-arrow">→</span>
+      <span class="hc-item">Learning</span>
+      <span class="hc-arrow">→</span>
+      <span class="hc-item">Application</span>
+      <span class="hc-arrow">→</span>
+      <span class="hc-item final">AI Use Case</span>
+    </div>
+
+    <div class="hero-sign">
+      <div class="hs-name">Albina Temisheva</div>
+      <div class="hs-role">AI &amp; People Lead · Driving B2B Sales</div>
+      <div class="hs-cert">Fractional CCO, Corporate & Business Coach ACC, ICF</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ 02 L'APPROCCIO - lavender ═════ -->
+<section class="section bg-lavender" id="approccio">
+  <div class="inner">
+    <div class="label muted">L'approccio</div>
+    <h2 style="margin-top:20px">Un caso, tre livelli<br>di lavoro con AI</h2>
+    <p class="lead">Immaginiamo una tipica trattativa enterprise: più stakeholder, requisiti tecnici, concorrenti, documenti del cliente, informazioni interne e più team che devono lavorare insieme. <strong>È esattamente con questo contesto che il team lavora durante tutto il percorso.</strong></p>
+
+    <div class="num-list" style="margin-top:36px">
+      <div class="num-row">
+        <div class="num-n muted">01</div>
+        <div>
+          <div class="label muted num-eyebrow">Good Prompting</div>
+          <div class="num-title">Analizzare la trattativa e prepararsi</div>
+          <p>L'AI aiuta a strutturare le informazioni sul cliente, preparare uno stakeholder briefing, prevedere le domande difficili del cliente e identificare cosa ancora ti serve sapere per una preparazione solida.</p>
+        </div>
+      </div>
+      <div class="num-row">
+        <div class="num-n muted">02</div>
+        <div>
+          <div class="label muted num-eyebrow">Context Engineering</div>
+          <div class="num-title">Costruire la base di prove</div>
+          <p>Nel lavoro entrano documenti del cliente, requisiti tecnici, dati sul prodotto, informazioni sulla concorrenza e altre fonti. Il team impara a dare all'AI il contesto giusto, a verificare le informazioni e a costruire una Business Value Briefing basata su dati reali.</p>
+        </div>
+      </div>
+      <div class="num-row">
+        <div class="num-n muted">03</div>
+        <div>
+          <div class="label muted num-eyebrow">Agentic AI</div>
+          <div class="num-title">Strutturare un workflow complesso</div>
+          <p>Quando in una trattativa sono coinvolti Sales, Proposal / Sales Approval Process, Engineering, Finance, Legal e altre funzioni, il compito va oltre un singolo prompt. Il team analizza l'intero processo: cosa può fare l'AI, quali dati servono e dove la decisione resta all'uomo (Human Approval).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pb-out" style="margin-top:28px;background:var(--white)">
+      <div class="label muted pb-out-l">Risultato</div>
+      <p style="color:var(--dark)">Da una reale situazione commerciale emerge un AI Use Case strutturato, che può essere discusso e sviluppato all'interno dell'azienda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ 03 IL PERCORSO - white, roadmap ═════ -->
+<section class="section bg-white" id="percorso">
+  <div class="inner">
+    <div class="label">Come si svolge</div>
+    <h2 style="margin-top:20px">Il percorso</h2>
+    <p class="lead">Tre fasi: capire il contesto e provare l'approccio, lavorare sul caso reale, portare i risultati nel lavoro quotidiano.</p>
+
+    <!-- ROADMAP: 3 dots, 3 zones -->
+    <div class="roadmap">
+      <div class="rm-track-wrap">
+        <div class="rm-dot" style="left:0%"></div>
+        <div class="rm-dot" style="left:25.9%"></div>
+        <div class="rm-dot post" style="left:63%"></div>
+      </div>
+      <div class="rm-cols">
+        <div class="rm-col">
+          <div class="label rm-col-label">Pre-training</div>
+          <div class="rm-col-title">Prima di iniziare</div>
+          <p class="rm-col-text">Discovery Call · Demo Session</p>
+        </div>
+        <div class="rm-col">
+          <div class="label rm-col-label">Training</div>
+          <div class="rm-col-title">Il percorso</div>
+          <p class="rm-col-text">Deep Discovery · Tre sessioni pratiche</p>
+        </div>
+        <div class="rm-col rm-col-post">
+          <div class="label muted rm-col-label">Post-training</div>
+          <div class="rm-col-title">Dal percorso all'applicazione</div>
+          <p class="rm-col-text">Mentor Pack · Use-Case Acceleration · Advanced Lab</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════ PHASE DETAILS - unified template ═════ -->
+    <div style="margin-top:52px">
+
+      <div class="phase-block on-cream">
+        <div class="label pb-eyebrow">Pre-training</div>
+        <div class="pb-title">Discovery Call</div>
+        <div class="pb-meta">40 minuti · online</div>
+        <p>Una conversazione breve per capire il contesto del team, i tipici Sales-task e scegliere un esempio adatto per la Demo.</p>
+      </div>
+
+      <div class="phase-block on-cream">
+        <div class="label pb-eyebrow">Pre-training</div>
+        <div class="pb-title">Demo Session</div>
+        <div class="pb-meta">2 ore · online</div>
+        <p>Il team prova l'approccio su una situazione commerciale concreta e vede come l'AI può funzionare all'interno di un processo reale. L'obiettivo è capire il metodo in pratica e individuare dove può essere utile per il proprio team.</p>
+        <div class="pb-out">
+          <div class="label muted pb-out-l">Risultato</div>
+          <div class="pb-out-t">Una prima esperienza pratica del metodo e una visione concreta del percorso completo.</div>
+        </div>
+      </div>
+
+      <div class="phase-block on-white">
+        <div class="label pb-eyebrow">Training · Preparazione</div>
+        <div class="pb-title">Deep Discovery</div>
+        <div class="pb-meta">2 incontri · 40 minuti · online</div>
+        <p>Dopo la conferma del programma, analizziamo il team più in profondità: ruoli dei partecipanti, processi Sales reali, tipologie di trattative, dati e documenti disponibili, vincoli interni.</p>
+        <div class="pb-sub">
+          <div class="pb-sub-label">Primo incontro</div>
+          <p>Con Sales Director e i manager che conducono le trattative: priorità strategiche, principali difficoltà, esempi di trattative andate bene.</p>
+        </div>
+        <div class="pb-sub">
+          <div class="pb-sub-label">Secondo incontro</div>
+          <p>Con Proposal / Bid Manager e il team che lavora su documenti e processi: come funziona il processo RFP, dove si perde tempo, quali dati sono disponibili.</p>
+        </div>
+        <div class="pb-out">
+          <div class="label muted pb-out-l">Risultato</div>
+          <div class="pb-out-t">Un Sales case selezionato e il contesto preparato per le tre sessioni pratiche.</div>
+        </div>
+      </div>
+
+      <div class="phase-block on-white">
+        <div class="label pb-eyebrow">Training · Le sessioni</div>
+        <div class="pb-title">Tre sessioni pratiche</div>
+        <div class="pb-meta">3 sessioni · 4 ore ciascuna · in presenza</div>
+
+        <div class="case-intro">
+          <p>Per tutto il percorso il team lavora su un caso concreto: una trattativa complessa con un grande cliente enterprise, più stakeholder con priorità diverse, una RFP in arrivo e una pressione sul prezzo. Ogni sessione porta il caso un passo avanti.</p>
+        </div>
+
+        <div class="chain">
+          <span class="ch-item">Real Sales Case</span>
+          <span class="ch-arr">→</span>
+          <span class="ch-item">Good Prompting</span>
+          <span class="ch-arr">→</span>
+          <span class="ch-item">Context Engineering</span>
+          <span class="ch-arr">→</span>
+          <span class="ch-item">Agentic AI</span>
+          <span class="ch-arr">→</span>
+          <span class="ch-item last">AI Use Case</span>
+        </div>
+
+        <div class="day">
+          <div class="day-badge">Giorno 1 · Good Prompting</div>
+          <div class="day-title">Preparare e analizzare la trattativa</div>
+          <div class="day-sub">Come costruire il contesto e prepararsi a fondo prima di incontrare il cliente.</div>
+          <div class="day-cols">
+            <div>
+              <div class="label light dc-label">Cosa si lavora</div>
+              <p class="dc-text">Contesto del cliente, stakeholder, storia della relazione, materiali disponibili e situazione attuale della trattativa.</p>
+            </div>
+            <div>
+              <div class="label light dc-label">Come si usa l'AI</div>
+              <p class="dc-text">L'AI aiuta a strutturare le informazioni, preparare uno stakeholder briefing, prevedere le domande difficili e identificare cosa ancora ti serve sapere.</p>
+            </div>
+            <div>
+              <div class="label light dc-label">Il team porta via</div>
+              <ul class="dc-list">
+                <li>Negotiation Briefing Template</li>
+                <li>Objection Map</li>
+                <li>AI Sales Moment Map</li>
+              </ul>
+              <p class="dc-note">Strumenti riutilizzabili per preparare qualsiasi incontro commerciale complesso, senza ripartire da zero.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="day-badge">Giorno 2 · Context Engineering</div>
+          <div class="day-title">Business Value Briefing e base di prove</div>
+          <div class="day-sub">Come trasformare dati e fonti in un'argomentazione verificabile e convincente.</div>
+          <div class="day-cols">
+            <div>
+              <div class="label light dc-label">Cosa si lavora</div>
+              <p class="dc-text">Documenti del cliente, requisiti tecnici, materiali interni, dati sul prodotto, informazioni sulla concorrenza e altre fonti rilevanti.</p>
+            </div>
+            <div>
+              <div class="label light dc-label">Come si usa l'AI</div>
+              <p class="dc-text">Il team impara a lavorare con un contesto ampio, confrontare dati, individuare lacune e costruire una Business Value Briefing basata su informazioni verificabili.</p>
+            </div>
+            <div>
+              <div class="label light dc-label">Il team porta via</div>
+              <ul class="dc-list">
+                <li>Business Value Briefing</li>
+                <li>Source Map</li>
+                <li>Assumptions &amp; Verification Register</li>
+              </ul>
+              <p class="dc-note">Un'argomentazione difendibile, con fonti chiare e punti da validare già identificati prima di presentarla al cliente.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="day-badge">Giorno 3 · Agentic AI</div>
+          <div class="day-title">Workflow complesso e RFP</div>
+          <div class="day-sub">Come progettare processi in cui l'AI supporta senza sostituire il giudizio commerciale.</div>
+          <div class="day-cols">
+            <div>
+              <div class="label light dc-label">Cosa si lavora</div>
+              <p class="dc-text">Un processo che coinvolge Sales, Proposal / Sales Approval Process, Engineering, Finance e Legal - con dati incompleti, condizioni fuori standard e più team da coordinare.</p>
+            </div>
+            <div>
+              <div class="label light dc-label">Come si usa l'AI</div>
+              <p class="dc-text">Il team definisce quali task può supportare l'AI, quali dati servono e dove la decisione resta all'uomo (Human Approval): pricing, impegni contrattuali, bid/no-bid.</p>
+            </div>
+            <div>
+              <div class="label light dc-label">Il team porta via</div>
+              <ul class="dc-list">
+                <li>RFP / Sales Approval Process Workflow Map</li>
+                <li>Roles &amp; Approvals Map</li>
+                <li>AI Use Case Canvas</li>
+              </ul>
+              <p class="dc-note">Un processo strutturato per rispondere a RFP complesse, con ruoli chiari e un AI Use Case pronto per essere discusso internamente.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-box">
+          <div class="result-chain">
+            <span class="rs-item">Real Sales Case</span>
+            <span class="rs-arr">→</span>
+            <span class="rs-item">Practical AI Skills</span>
+            <span class="rs-arr">→</span>
+            <span class="rs-item">Reusable Sales Assets</span>
+            <span class="rs-arr">→</span>
+            <span class="rs-item">AI Use Case</span>
+          </div>
+          <p>Il team esce con l'esperienza di aver applicato l'AI su una reale situazione commerciale, con materiali di lavoro pronti e un AI Use Case strutturato da sviluppare ulteriormente all'interno dell'azienda.</p>
+        </div>
+      </div>
+
+      <!-- POST-TRAINING · L1 -->
+      <div class="phase-block on-lavender">
+        <div class="label muted pb-eyebrow">Post-training · Level 01</div>
+        <div class="pb-title">Mentor Pack</div>
+        <div class="pb-meta">Applicare il metodo a una situazione reale</div>
+        <p>Dopo la formazione il lavoro continua su trattative reali, RFP e processi interni. In quel momento può emergere una domanda concreta, un materiale da verificare o una situazione difficile da affrontare da soli. Il Mentor Pack permette di lavorare con un mentore in una sessione individuale o di gruppo e analizzare insieme quella situazione - dalla preparazione di un incontro difficile alla revisione di una Business Value Briefing, di un workflow o di un AI Use Case.</p>
+        <p><strong>Disponibile solo per i partecipanti al programma.</strong></p>
+
+        <div class="cards-3">
+          <div class="card">
+            <div class="card-num">01</div>
+            <div class="card-title">Una trattativa reale</div>
+            <p class="card-text">Un nuovo stakeholder, un cambiamento nella posizione del cliente, una domanda sulla trattativa in corso.</p>
+          </div>
+          <div class="card">
+            <div class="card-num">02</div>
+            <div class="card-title">Un materiale da verificare</div>
+            <p class="card-text">Un Briefing, una Business Value Briefing o un'offerta preparata con l'AI, da analizzare e migliorare insieme.</p>
+          </div>
+          <div class="card">
+            <div class="card-num">03</div>
+            <div class="card-title">Un nuovo AI Use Case</div>
+            <p class="card-text">Un Sales-task che si ripete: insieme si chiarisce problema, processo, dati, ruoli e passo successivo.</p>
+          </div>
+        </div>
+
+        <div class="cards-2">
+          <div class="card">
+            <div class="label light pb-out-l">Formato</div>
+            <div class="card-title">Individual mentoring</div>
+            <p class="card-text">Quando il tema riguarda un partecipante specifico o la sua trattativa.</p>
+          </div>
+          <div class="card">
+            <div class="label light pb-out-l">Formato</div>
+            <div class="card-title">Group mentoring</div>
+            <p class="card-text">Quando il tema riguarda più partecipanti o l'intero team.</p>
+          </div>
+        </div>
+
+        <div class="pb-out">
+          <div class="label muted pb-out-l">Mentor Map</div>
+          <div class="pb-out-t">Alla fine del programma i partecipanti ricevono la Mentor Map - un set di materiali che aiuta a capire rapidamente quando ricorrere al mentoring e quale formato scegliere.</div>
+        </div>
+      </div>
+
+      <!-- POST-TRAINING · L2 -->
+      <div class="phase-block on-lavender">
+        <div class="label muted pb-eyebrow">Post-training · Level 02</div>
+        <div class="pb-title">Use-Case Acceleration</div>
+        <div class="pb-meta">Portare un AI Use Case a maturità iPOC-ready</div>
+        <p>Se durante la formazione è emerso un use case con un reale potenziale di business, è possibile svilupparlo in uno sprint di consulenza dedicato. In 4–6 sessioni nell'arco di 6–10 settimane, il team percorre la strada dall'idea al business case strutturato.</p>
+
+        <div class="path">
+          <span class="pt-item">Business Problem</span>
+          <span class="pt-arr">→</span>
+          <span class="pt-item">As-Is / To-Be</span>
+          <span class="pt-arr">→</span>
+          <span class="pt-item">Data</span>
+          <span class="pt-arr">→</span>
+          <span class="pt-item">KPI</span>
+          <span class="pt-arr">→</span>
+          <span class="pt-item">Risks</span>
+          <span class="pt-arr">→</span>
+          <span class="pt-item">Governance</span>
+          <span class="pt-arr">→</span>
+          <span class="pt-item">Evaluation</span>
+        </div>
+
+        <p>Il risultato è un iPOC-ready business case da portare a una decisione interna: <strong>Go / Revise / Stop</strong>. L'implementazione tecnica rimane responsabilità del team AI interno del cliente - qui il lavoro è collegare il problema commerciale ai requisiti della soluzione.</p>
+        <p><strong>Ruolo: bridge tra Sales e il team AI interno.</strong></p>
+      </div>
+
+      <!-- POST-TRAINING · L3 -->
+      <div class="phase-block on-lavender">
+        <div class="label muted pb-eyebrow">Post-training · Level 03</div>
+        <div class="pb-title">Advanced Lab</div>
+        <div class="pb-meta">Il livello successivo - su richiesta</div>
+        <p>Si attiva dopo il programma base, quando c'è già esperienza nell'applicare l'approccio e si vuole andare più in profondità su un tema specifico.</p>
+
+        <div class="cards-2">
+          <div class="card">
+            <div class="label light pb-out-l">Per Account Manager e Bid Leader</div>
+            <div class="card-title">Advanced Strategic Sales Lab</div>
+            <p class="card-text">Contratti complessi e pluriennali, multi-stakeholder mapping, scenario modelling.</p>
+          </div>
+          <div class="card">
+            <div class="label light pb-out-l">Per Sales Director</div>
+            <div class="card-title">AI for Sales Leadership</div>
+            <p class="card-text">Pipeline review, coaching del team, forecasting, AI adoption e dashboard.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PERCHÉ FUNZIONA -->
+    <div style="margin-top:56px;padding-top:48px;border-top:1px solid var(--line)">
+      <div class="label">Il metodo</div>
+      <h2 style="margin-top:20px">Perché questo<br>approccio funziona</h2>
+
+      <div class="num-list">
+        <div class="num-row">
+          <div class="num-n">01</div>
+          <div>
+            <div class="num-title">Un solo caso complesso, non una serie di esercizi AI</div>
+            <p>Il team lavora su un'unica situazione commerciale e vede come l'AI può aiutare nelle diverse fasi della stessa trattativa. Il contesto resta sempre riconoscibile.</p>
+          </div>
+        </div>
+        <div class="num-row">
+          <div class="num-n">02</div>
+          <div>
+            <div class="num-title">Ogni sessione produce un risultato concreto</div>
+            <p>Briefing, Business Value Briefing, Source Map, Workflow Map, AI Use Case Canvas - i materiali vengono creati durante il percorso e restano al team.</p>
+          </div>
+        </div>
+        <div class="num-row">
+          <div class="num-n">03</div>
+          <div>
+            <div class="num-title">La decisione resta all'uomo</div>
+            <p>L'AI aiuta ad analizzare e preparare le informazioni. Le decisioni su prezzi, condizioni commerciali e impegni restano in mano al Sales - e questo confine viene costruito esplicitamente durante il percorso.</p>
+          </div>
+        </div>
+        <div class="num-row">
+          <div class="num-n">04</div>
+          <div>
+            <div class="num-title">Il metodo non dipende da un unico strumento</div>
+            <p>I partecipanti imparano i principi di Good Prompting, Context Engineering e Agentic AI. Si applicano con diversi strumenti AI, inclusi quelli già in uso in azienda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ 04 PER CHI - lavender ═════ -->
+<section class="section bg-lavender" id="perchi">
+  <div class="inner">
+    <div class="label muted">Per chi è</div>
+    <h2 style="margin-top:20px">Per chi è questo formato</h2>
+    <p class="lead">Per i team Sales che lavorano su trattative B2B complesse, con un lungo ciclo di vendita e più funzioni coinvolte nel processo.</p>
+
+    <div class="cards-2">
+      <div class="card">
+        <div class="label light pb-out-l">Enterprise Sales</div>
+        <div class="card-title">Trattative complesse</div>
+        <p class="card-text">Più stakeholder, lungo Sales cycle, decisioni che coinvolgono diverse funzioni del cliente.</p>
+      </div>
+      <div class="card">
+        <div class="label light pb-out-l">Key Account / Strategic Sales</div>
+        <div class="card-title">Grandi clienti</div>
+        <p class="card-text">Lavoro con clienti dove la decisione richiede una comprensione profonda del contesto.</p>
+      </div>
+      <div class="card">
+        <div class="label light pb-out-l">Proposal / Bid / Sales Approval Process</div>
+        <div class="card-title">RFP e offerte complesse</div>
+        <p class="card-text">Gare d'appalto, grandi volumi di documenti, coordinamento tra più funzioni interne.</p>
+      </div>
+      <div class="card">
+        <div class="label light pb-out-l">Sales Leaders</div>
+        <div class="card-title">Chi guida il team</div>
+        <p class="card-text">Team che vogliono capire dove l'AI può cambiare concretamente il lavoro quotidiano.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ 05 COME SCEGLIERE - white ═════ -->
+<section class="section bg-white">
+  <div class="inner">
+    <div class="label">Orientarsi</div>
+    <h2 style="margin-top:20px">Come scegliere il formato<br>dopo la formazione</h2>
+
+    <table class="choice">
+      <thead>
+        <tr>
+          <th>Se nel team c'è…</th>
+          <th>Il formato giusto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Una situazione concreta o una trattativa da analizzare</td>
+          <td>Mentor Pack</td>
+        </tr>
+        <tr>
+          <td>Un AI Use Case con potenziale reale da portare a una decisione interna</td>
+          <td>Use-Case Acceleration</td>
+        </tr>
+        <tr>
+          <td>La volontà di sviluppare competenze Sales o AI più avanzate</td>
+          <td>Advanced Lab</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═════ 06 CONTATTO - cream ═════ -->
+<section class="section bg-cream">
+  <div class="inner">
+    <div class="contact">
+      <div>
+        <img src="photo.png" alt="Albina Temisheva" class="contact-photo">
+      </div>
+      <div>
+        <div class="ct-name">Albina Temisheva</div>
+        <div class="ct-role">AI &amp; People Lead · Driving B2B Sales</div>
+        <div class="ct-cert">Fractional CCO, Corporate & Business Coach ACC, ICF</div>
+        <div class="ct-links">
+          <a href="https://changelabtech.com" class="ct-link" target="_blank">changelabtech.com</a>
+          <a href="mailto:atemisheva@changelabtech.com" class="ct-link">atemisheva@changelabtech.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
